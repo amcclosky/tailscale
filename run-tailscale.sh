@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 if [[ ${TAILSCALE_AUTHKEY:-} ]]; then
+  mkdir -p /home/render/.state
   /home/render/tailscaled -socket=/home/render/tailscaled.sock \
-    -state=/home/render/tailscaled.state \
+    -state=/home/render/.state/tailscaled.state \
     -tun=userspace-networking \
     -socks5-server=localhost:1055 &
 
